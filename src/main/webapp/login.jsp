@@ -153,6 +153,13 @@ body{
     font-weight:bold;
 }
 
+.error{
+    color:red;
+    text-align:center;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
 </style>
 
 </head>
@@ -169,24 +176,31 @@ body{
         Farmer Login
     </h1>
 
+    <% if(request.getAttribute("error") != null){ %>
+        <div class="error">
+            <%= request.getAttribute("error") %>
+        </div>
+    <% } %>
+
     <form action="FarmerLogin" method="post">
 
         <div class="input-box">
             <i class="fa-solid fa-user"></i>
 
+            <!-- FIXED HERE -->
             <input type="text"
-            name="username"
-            placeholder="Enter Username"
-            required>
+                   name="uname"
+                   placeholder="Enter Username"
+                   required>
         </div>
 
         <div class="input-box">
             <i class="fa-solid fa-lock"></i>
 
             <input type="password"
-            name="password"
-            placeholder="Enter Password"
-            required>
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
         </div>
 
         <button type="submit" class="login-btn">
